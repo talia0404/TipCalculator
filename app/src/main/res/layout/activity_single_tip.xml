@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#53504C"
+    tools:context=".SingleTipActivity"
+    android:padding="32dp">
+
+    <!-- Header TextView -->
+    <TextView
+        android:id="@+id/txtHead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tip App"
+        android:textSize="64sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- ImageView (same as in main layout) -->
+    <ImageView
+        android:id="@+id/imgBillImage"
+        android:layout_width="194dp"
+        android:layout_height="201dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/txtHead"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/bill" />
+
+    <!-- EditText for Bill Amount (styled as your provided snippet) -->
+    <EditText
+        android:id="@+id/edtBillAmt"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/rounded_edittext"
+        android:hint="Enter Bill Amount"
+        android:inputType="numberDecimal"
+        android:padding="16dp"
+        android:textColorHint="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/imgBillImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- EditText for Tip Percentage -->
+    <EditText
+        android:id="@+id/edtTipPercent"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/rounded_edittext"
+        android:hint="Enter Tip Percentage"
+        android:inputType="numberDecimal"
+        android:padding="16dp"
+        android:textColorHint="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/edtBillAmt"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Calculate Button (styled similarly to main buttons) -->
+    <Button
+        android:id="@+id/btnCalcTip"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:text="Calculate Tip"
+        android:textColor="#53504C"
+        android:backgroundTint="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/edtTipPercent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- TextView to display tip result -->
+    <TextView
+        android:id="@+id/txtTipAmt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tip:"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@id/btnCalcTip"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

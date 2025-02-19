@@ -1,72 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#53504C"
     tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/txthead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="Tip App"
+        android:textSize="64sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/imgBillImage" />
 
     <ImageView
         android:id="@+id/imgBillImage"
         android:layout_width="194dp"
         android:layout_height="201dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="124dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/bill" />
 
-    <EditText
-        android:id="@+id/edtTip"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="24dp"
-        android:hint="Enter Tip Percentage"
-        android:inputType="number"
-        android:padding="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edtBillAmt" />
-
     <Button
-        android:id="@+id/btnCalculate"
+        android:id="@+id/btnSingleCalc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:text="Calculate Tip"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edtTip" />
-
-    <TextView
-        android:id="@+id/txtTipAmount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:text="R0"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnCalculate" />
-
-    <EditText
-        android:id="@+id/edtBillAmt"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="64dp"
-        android:hint="Enter Bill Amount"
-        android:inputType="numberDecimal"
-        android:padding="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginTop="16dp"
+        android:text="Single Tip"
+        android:textColor="#53504C"
+        android:backgroundTint="@color/white"
+        app:layout_constraintEnd_toStartOf="@id/btnSplitCalc"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imgBillImage" />
 
-
+    <Button
+        android:id="@+id/btnSplitCalc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Split Tip"
+        android:textColor="#53504C"
+        android:backgroundTint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnSingleCalc"
+        app:layout_constraintTop_toBottomOf="@id/imgBillImage" />
 </androidx.constraintlayout.widget.ConstraintLayout>
