@@ -15,7 +15,6 @@ import com.talia.tipcalculator.databinding.ActivitySplitTipBinding
 class SplitTipActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySplitTipBinding
 
-    // List to hold dynamically created EditTexts for each person's amount input.
     private val amountEditTexts = mutableListOf<EditText>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,16 +22,13 @@ class SplitTipActivity : AppCompatActivity() {
         binding = ActivitySplitTipBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Initially hide dynamic views, calculate button, and results container.
         binding.txtEnterAmounts.visibility = android.view.View.GONE
         binding.dynamicContainer.visibility = android.view.View.GONE
         binding.btnCalcTip.visibility = android.view.View.GONE
         binding.resultsContainer.visibility = android.view.View.GONE
 
-        // Listen for changes in edtNumPeople to dynamically create amount input fields.
         binding.edtNumPeople.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                // Reset dynamic views when number of people changes.
                 resetDynamicViews()
 
                 val numPeople = s.toString().toIntOrNull()
@@ -41,14 +37,14 @@ class SplitTipActivity : AppCompatActivity() {
                     binding.dynamicContainer.visibility = android.view.View.VISIBLE
                     for (i in 1..numPeople) {
                         val editText = EditText(this@SplitTipActivity)
-                        // Set layout parameters matching the XML style.
-                        val params = LinearLayout.LayoutParams(
+                        val parameters = LinearLayout.LayoutParams(
                             LinearLayout.LayoutParams.MATCH_PARENT,
                             dpToPx(64)
                         )
-                        params.setMargins(dpToPx(32), dpToPx(16), dpToPx(32), 0)
-                        editText.layoutParams = params
-                        editText.hint = "Amount for person $i"
+
+                        parameters.setMargins(dpToPx(32), dpToPx(16), dpToPx(32), 0)
+                        editText.layoutParams = parameters
+                        editText.hint = "Amount for person Ri"
                         editText.inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL
                         editText.setPadding(dpToPx(16), dpToPx(16), dpToPx(16), dpToPx(16))
                         editText.setBackgroundResource(R.drawable.rounded_edittext)
@@ -56,8 +52,12 @@ class SplitTipActivity : AppCompatActivity() {
                         binding.dynamicContainer.addView(editText)
                         amountEditTexts.add(editText)
                     }
+
                     binding.btnCalcTip.visibility = android.view.View.VISIBLE
-                } else {
+
+                } else
+
+                {
                     binding.txtEnterAmounts.visibility = android.view.View.GONE
                     binding.dynamicContainer.visibility = android.view.View.GONE
                     binding.btnCalcTip.visibility = android.view.View.GONE
@@ -81,30 +81,28 @@ class SplitTipActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Sum the individual amounts.
             var totalEntered = 0.0
             for (editText in amountEditTexts) {
                 val amount = editText.text.toString().toDoubleOrNull() ?: 0.0
                 totalEntered += amount
             }
 
-            if (kotlin.math.abs(totalEntered - bill) > 0.01) { // allow slight precision error
+            if (kotlin.math.abs(totalEntered - bill) > 0.01) {
                 Toast.makeText(
                     this,
-                    "The total of individual amounts ($totalEntered) does not match the bill amount ($bill)",
+                    "The total of individual amounts (RtotalEntered) does not match the bill amount (Rbill)",
                     Toast.LENGTH_LONG
                 ).show()
                 return@setOnClickListener
             }
 
-            // Calculate tip for each amount and display.
-            binding.resultsContainer.removeAllViews() // Clear previous results.
+            binding.resultsContainer.removeAllViews()
             for ((index, editText) in amountEditTexts.withIndex()) {
                 val amount = editText.text.toString().toDoubleOrNull() ?: 0.0
                 val tipForPerson = amount * tipPercent / 100
                 val textView = TextView(this)
-                textView.text = "Person ${index+1} tip: $%.2f".format(tipForPerson)
-                // Set layout params similar to our styled views.
+                textView.text = "Person R{index+1} tip: R%.2f".format(tipForPerson)
+
                 val params = LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT
@@ -118,7 +116,6 @@ class SplitTipActivity : AppCompatActivity() {
         }
     }
 
-    // Helper function to convert dp to pixels.
     private fun dpToPx(dp: Int): Int {
         return TypedValue.applyDimension(
             TypedValue.COMPLEX_UNIT_DIP, dp.toFloat(), resources.displayMetrics

@@ -31,7 +31,7 @@ class SingleTipActivity : AppCompatActivity() {
             }
 
             val tipAmount = bill * tipPercent / 100
-            binding.txtTipAmt.text = "Tip: $%.2f".format(tipAmount)
+            binding.txtTipAmt.text = "Tip: R%.2f".format(tipAmount)
         }
     }
 }
